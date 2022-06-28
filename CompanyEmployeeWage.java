@@ -1,12 +1,14 @@
 public class CompanyEmployeeWage {
     static final int EMP_IS_PRESENT = 1, IS_PART_TIME_PRESENT = 2;
-    static final int FULL_TIME_WORKING_HRS = 8, PART_TIME_WORKING_HRS = 4;
+    static final int FULL_TIME_WORKING_HRS = 8, PART_TIME_WORKING_HRS = 4,WORKING_DAY_FOR_MONTH = 20;
 
     public static void main(String[] args) {
         display();
         CompanyEmployeeWage attendenceCheck = new CompanyEmployeeWage();
         int workingHrsPerDay = attendenceCheck.switchCase();
         attendenceCheck.dailyWage(workingHrsPerDay);
+        int monthlyWage = attendenceCheck.monthlyWage();
+        System.out.println("Employee Monthly Wage : " + monthlyWage);
     }
 
     public static void display() {
@@ -53,7 +55,20 @@ public class CompanyEmployeeWage {
         }
         return workingHrPerDay;
     }
+    public int monthlyWage() {
+        CompanyEmployeeWage monthlyWageCalculator = new CompanyEmployeeWage();
 
+        int monthlyWage = 0;
+
+        for (int i = 1; i <= WORKING_DAY_FOR_MONTH; i++) {
+            System.out.println("Day-" + i);
+            int workingHrsPerDay = monthlyWageCalculator.attendanceCheck();
+            int dailyWage = monthlyWageCalculator.dailyWage(workingHrsPerDay);
+
+            monthlyWage += dailyWage;
+        }
+        return monthlyWage;
+    }
 
 
     public int dailyWage(int workingHrPerDay) {
