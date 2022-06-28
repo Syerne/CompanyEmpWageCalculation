@@ -1,11 +1,11 @@
 public class CompanyEmployeeWage {
     static final int EMP_IS_PRESENT = 1, IS_PART_TIME_PRESENT = 2;
-    static final int FULL_TIME_WORKING_HRS = 8, PART_TIME_WORKING_HR = 4;
+    static final int FULL_TIME_WORKING_HRS = 8, PART_TIME_WORKING_HRS = 4;
 
     public static void main(String[] args) {
         display();
         CompanyEmployeeWage attendenceCheck = new CompanyEmployeeWage();
-        int workingHrsPerDay = attendanceCheck();
+        int workingHrsPerDay = attendenceCheck.switchCase();
         attendenceCheck.dailyWage(workingHrsPerDay);
     }
 
@@ -23,13 +23,38 @@ public class CompanyEmployeeWage {
             workingHrsPerDay = FULL_TIME_WORKING_HRS;
         } else if (empRandomCheck == IS_PART_TIME_PRESENT) {
             System.out.println("Employee is Part Time Present");
-            workingHrsPerDay = PART_TIME_WORKING_HR;
+            workingHrsPerDay = PART_TIME_WORKING_HRS;
         } else {
             System.out.println("Employee Absent");
             workingHrsPerDay = 0;
         }
         return workingHrsPerDay;
     }
+    public int switchCase() {
+
+        int workingHrPerDay;
+        int rand = (int) (Math.random() * 3);
+
+        switch (rand) {
+
+            case EMP_IS_PRESENT:
+                System.out.println("Employee is full time Present");
+                workingHrPerDay = FULL_TIME_WORKING_HRS;
+                break;
+
+            case IS_PART_TIME_PRESENT:
+                System.out.println("Employee is part time Present");
+                workingHrPerDay = PART_TIME_WORKING_HRS;
+                break;
+
+            default:
+                System.out.println("Employee is absent");
+                workingHrPerDay = 0;
+        }
+        return workingHrPerDay;
+    }
+
+
 
     public int dailyWage(int workingHrPerDay) {
 
