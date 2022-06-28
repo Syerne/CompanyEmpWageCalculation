@@ -70,8 +70,8 @@ public class CompanyEmployeeWage {
 
             monthlyWage += dailyWage;
             workingHrsPerMonth += workingHrsPerDay;
-            System.out.println("Employee Hrs :" + workingHrsPerMonth);
         }
+        System.out.println("Employee Hrs :" + workingHrsPerMonth);
         return monthlyWage;
     }
 
