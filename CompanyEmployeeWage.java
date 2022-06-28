@@ -1,6 +1,6 @@
 public class CompanyEmployeeWage {
-    static final int EMP_IS_PRESENT = 1;
-    static final int FULL_TIME_WORKING_HRS = 8;
+    static final int EMP_IS_PRESENT = 1, IS_PART_TIME_PRESENT = 2;
+    static final int FULL_TIME_WORKING_HRS = 8, PART_TIME_WORKING_HR = 4;
 
     public static void main(String[] args) {
         display();
@@ -15,14 +15,17 @@ public class CompanyEmployeeWage {
 
     public static int attendanceCheck() {
 
-        int empRandomCheck = (int) (Math.random() * 2);
+        int empRandomCheck = (int) (Math.random() * 3);
 
         int workingHrsPerDay;
         if (empRandomCheck == EMP_IS_PRESENT) {
             System.out.println("Employee is Present");
             workingHrsPerDay = FULL_TIME_WORKING_HRS;
+        } else if (empRandomCheck == IS_PART_TIME_PRESENT) {
+            System.out.println("Employee is Part Time Present");
+            workingHrsPerDay = PART_TIME_WORKING_HR;
         } else {
-            System.out.println("Employee is Absent");
+            System.out.println("Employee Absent");
             workingHrsPerDay = 0;
         }
         return workingHrsPerDay;
